@@ -21,5 +21,13 @@
 ***REMOVED***
 
 ***REMOVED***
+  adapter: mysql2
+  encoding: utf8
 ***REMOVED***
-***REMOVED***
+  username: root
+  password: root
+  ***REMOVED*** for OSX 
+  ***REMOVED*** socket: /tmp/mysql.sock
+  ***REMOVED*** for Linux
+  socket: /var/run/mysqld/mysqld.sock
+  database: eyoo_development
