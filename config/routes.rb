@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
+  devise_for :admins
+  devise_for :users
+
+  root 'welcome***REMOVED***index'
   ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
   ***REMOVED*** See how all your routes lay out with "rake routes".
 
