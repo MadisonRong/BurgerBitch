@@ -1,0 +1,25 @@
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***   Ensure the SQLite 3 gem is defined in your Gemfile
+***REMOVED***   gem 'sqlite3'
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+***REMOVED***
+
+***REMOVED***
+***REMOVED***
+***REMOVED***
+
+***REMOVED*** Warning: The database defined as "test" will be erased and
+***REMOVED*** re-generated from your development database when you run "rake".
+***REMOVED*** Do not set this db to the same as development or production.
+***REMOVED***
+***REMOVED***
+***REMOVED***
+
+***REMOVED***
+***REMOVED***
+***REMOVED***
