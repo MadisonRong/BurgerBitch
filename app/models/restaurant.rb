@@ -8,7 +8,7 @@ class Restaurant < ActiveRecord::Base
 
   # 根据餐厅获取对应菜单
   scope :get_dishes, ->(restaurant_id){
-    dishes = Restaurant.find(restaurant_id).dishes.order('id, dish_type_id')
+    dishes = Restaurant.find(restaurant_id).dishes.order('id, dish_type_id,price')
     # 分类展示菜式
     dishes_hash = Hash.new
     iterator = 0
