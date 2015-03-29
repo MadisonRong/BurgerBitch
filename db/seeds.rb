@@ -5,3 +5,7 @@
 ***REMOVED***
 ***REMOVED***   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 ***REMOVED***   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'roo'
+s = Roo::Excelx.new("myspreadsheet.xlsx")
+s.default_sheet = s.sheets.first
+s.cell(1,1)
