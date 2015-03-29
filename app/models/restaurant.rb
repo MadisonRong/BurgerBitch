@@ -41,5 +41,6 @@ class Restaurant < ActiveRecord::Base
       end
       iterator += 1
     end
+    return result_hash
   }
 end
