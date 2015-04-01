@@ -1,0 +1,19 @@
+<% if @order_count == -5 %>
+<h1>未到午饭订餐时间</h1>
+<h2>Uh uh, not now......</h2>
+<% elsif @order_count == -4 %>
+<h1>过了午饭订餐时间，未到晚饭订餐时间</h1>
+<h2>Uh uh, not now......</h2>
+<% elsif @order_count == -3 %>
+<h1>已过了晚饭订餐时间</h1>
+<h2>Uh uh, not now......</h2>
+<% elsif @order_count > 0 %>
+<h1>你已经订过餐了→_→......</h1>
+<h2>Uh uh, you have done this......</h2>
+<% else %>
+<h1>现在还不能点餐哦</h1>
+<h2>Uh uh, not now......</h2>
+<% end %>
+<h3>订餐时间：</h3>
+<h3>11:00 am -- 2:00 pm</h3>
+<h3>5:00 pm -- 6:00 pm</h3>

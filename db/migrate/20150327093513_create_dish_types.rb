@@ -4,5 +4,6 @@ class CreateDishTypes < ActiveRecord::Migration
       t.string :name, null: false
       t.timestamps null: false
     end
+    add_index :dish_types, :name, unique: true
   end
 end

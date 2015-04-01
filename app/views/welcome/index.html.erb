@@ -1,0 +1,8 @@
+<% if current_user.nil? %>
+  <%= button_to "登录", new_user_session_path, method: :get, class: "btn btn-primary btn-lg btn-block" %>
+  <%= button_to "注册", new_user_registration_path, method: :get, class: "btn btn-default btn-lg btn-block" %>
+<% else %>
+  <%= button_to "我要点餐", new_user_order_path, method: :get, class: "btn btn-primary btn-lg btn-block" %>
+  <%= button_to "我的点餐记录", user_orders_path, method: :get, class: "btn btn-default btn-lg btn-block" %>
+  <%= button_to "退出登录", destroy_user_session_path, method: :delete, class: "btn btn-danger btn-lg btn-block" %>
+<% end %>

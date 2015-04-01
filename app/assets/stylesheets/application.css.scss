@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+@import "shared/header";
+@import "shared/burgerbitch";
+@import "shared/footer";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "dataTables/jquery.dataTables";
+@import "dataTables/extras/dataTables.responsive";

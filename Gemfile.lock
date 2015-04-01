@@ -44,9 +44,15 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    autoprefixer-rails (5.1.8)
+      execjs
+      json
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.4.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     builder (3.2.2)
     byebug (4.0.3)
       columnize (= 0.9.0)
@@ -56,6 +62,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -88,6 +95,11 @@ GEM
     jbuilder (2.2.12)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jquery-datatables-rails (3.2.0)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+      sass-rails
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -123,6 +135,7 @@ GEM
       rack (~> 1.1)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.3.0)
     rails (4.2.0)
       actionmailer (= 4.2.0)
       actionpack (= 4.2.0)
@@ -168,6 +181,12 @@ GEM
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rolify (4.0.0)
+    roo (1.13.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
+    ruby-ole (1.2.11.8)
+    rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.4.13)
     sass-rails (5.0.1)
@@ -180,6 +199,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     slop (3.6.0)
+    spreadsheet (1.0.3)
+      ruby-ole (>= 1.0)
     spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -213,22 +234,27 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.3.4)
   by_star!
   byebug
   cancan
   carrierwave
+  chronic
   coffee-rails (~> 4.1.0)
   devise
   faker (= 1.1.2)
   jbuilder (~> 2.0)
+  jquery-datatables-rails (~> 3.2.0)
   jquery-rails
   kaminari
   mini_magick
   mysql2
   pry
+  railroady
   rails (= 4.2.0)
   rails_admin
   rolify
+  roo
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

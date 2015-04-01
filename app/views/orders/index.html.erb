@@ -1,0 +1,41 @@
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">我的点餐记录</div>
+  <div class="panel-body">
+    <p>本月金额：<%= @sum %></p>
+  </div>
+
+  <!-- Table -->
+    <% if !@orders.blank? %>
+      <table id="orders" class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>名字</th>
+          <th>价钱</th>
+          <th>时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= @orders.index(order) + 1 %>
+            </td>
+            <td><%= order[:name] %></td>
+            <td><%= order[:price] %></td>
+            <td><%= order[:time] %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h1>没有数据哦</h1>
+      <h3>no data...</h3>
+    <% end %>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#orders').DataTable();
+  } );
+</script>

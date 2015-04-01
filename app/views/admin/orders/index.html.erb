@@ -1,0 +1,52 @@
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">点餐情况</div>
+  <div class="panel-body">
+    <p>总金额:<%= @sum %></p>
+  </div>
+
+  <!-- Table -->
+    <% if !@orders.blank? %>
+      <table id="orders" class="table table-hover">
+      <thead>
+        <tr>
+          <th>店名</th>
+          <th>菜式名称</th>
+          <th>数量</th>
+          <th>价钱</th>
+          <th>点菜者</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <th rowspan="<%= order[:dishes].size %>">
+              <%= order[:restaurant_name] %>
+              <p><%= order[:phone] %></p>
+            </th>
+            <td><%= order[:dishes][0][:dish_name] %></td>
+            <td><%= order[:dishes][0][:count] %></td>
+            <td><%= order[:dishes][0][:price] %></td>
+            <td><%= order[:dishes][0][:users].join(",") %></td>
+          </tr>
+          <% 1.upto(order[:dishes].size - 1) do |iterator| %>
+          <tr>
+            <td><%= order[:dishes][iterator][:dish_name] %></td>
+            <td><%= order[:dishes][iterator][:count] %></td>
+            <td><%= order[:dishes][iterator][:price] %></td>
+            <td><%= order[:dishes][iterator][:users].join(",") %></td>
+          </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h1>没有数据哦</h1>
+      <h3>no data...</h3>
+    <% end %>
+</div>
+<!--  <script type="text/javascript">
+   $(document).ready(function() {
+     $('#orders').DataTable();
+   } );
+ </script> -->
