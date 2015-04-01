@@ -1,0 +1,12 @@
+<%= form_tag restaurant_dishes_path, remote: true do%>
+  选择餐厅：<%= select_tag "restaurant", options_from_collection_for_select(@restaurant, :id, :name) %>
+  <%= submit_tag "确定", class: "btn btn-default" %>
+<% end %>
+<div id="dishes"></div>
+<script>
+  $('input[type="submit"]').on('click', function () {
+    var $btn = $(this).button('loading')
+    // business logic...
+    $btn.button('reset')
+  })
+</script>

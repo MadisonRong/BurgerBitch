@@ -3,10 +3,10 @@ RailsAdmin.config do |config|
   ***REMOVED******REMOVED******REMOVED*** Popular gems integration
 
   ***REMOVED******REMOVED*** == Devise ==
-  ***REMOVED*** config.authenticate_with do
-  ***REMOVED***   warden.authenticate! scope: :user
-  ***REMOVED*** end
-  ***REMOVED*** config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :admin
+  end
+  config.current_user_method(&:current_admin)
 
   ***REMOVED******REMOVED*** == Cancan ==
   ***REMOVED*** config.authorize_with :cancan

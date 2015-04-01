@@ -38,12 +38,15 @@ ActiveRecord::Schema.define(version: 20150327093513) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "dish_types", ["name"], name: "index_dish_types_on_name", unique: true
+
   create_table "dishes", force: :cascade do |t|
-    t.integer  "dish_type_id", null: false
-    t.string   "name",         null: false
-    t.float    "price",        null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "dish_type_id",  null: false
+    t.integer  "restaurant_id", null: false
+    t.string   "name",          null: false
+    t.float    "price",         null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "orders", force: :cascade do |t|

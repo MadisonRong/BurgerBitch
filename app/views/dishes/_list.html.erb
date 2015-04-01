@@ -1,0 +1,29 @@
+<% if !@dishes.blank? %>
+  <%= form_tag user_orders_path do %>
+    <% @dishes.each do |k, v| %>
+      <%= k %>
+      <table class="table table-hover">
+        <tr>
+          <th>***REMOVED***</th>
+          <th>名字</th>
+          <th>价钱</th>
+        </tr>
+        <% v.each do |dish| %>
+          <tr>
+            <td>
+              <div class="radio">
+                <%= radio_button_tag "dish_id", dish.id %>
+              </div>
+            </td>
+            <td><%= dish.name %></td>
+            <td><%= dish.price %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+    <%= submit_tag "提交订单", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <h1>没有数据哦</h1>
+  <h3>no data...</h3>
+<% end %>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BurgerBitch</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
+<body>
+<header class="site-header">
+  <div class='logo'><%= image_tag("logo.png") %></div>
+  <div class="subTitle">内部订餐系统--后台管理系统</div>
+  <nav class='nav' id='siteNav'>
+    <%= link_to("后台管理系统首页", admin_root_path) %>
+  </nav>
+</header>
+<%= render 'shared/slicebox'%>
+<div class="container">
+  <div class="content">
+    <%= yield %>
+  </div>
+</div>
+<%= render 'shared/footer'%>
+</body>
+</html>
