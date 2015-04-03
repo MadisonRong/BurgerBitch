@@ -23,7 +23,7 @@ gem 'rails_admin'
 gem 'roo'
 gem 'jquery-datatables-rails', '~> 3.2.0'
 
-group :development do
+group :production do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
