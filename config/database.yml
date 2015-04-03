@@ -30,4 +30,4 @@
   ***REMOVED*** socket: /tmp/mysql.sock
   ***REMOVED*** for Linux
   socket: /var/run/mysqld/mysqld.sock
-  database: eyoo_development
+  database: burger_bitch
