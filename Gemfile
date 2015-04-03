@@ -22,8 +22,13 @@ gem 'by_star', :git => "git://github.com/radar/by_star"
 gem 'rails_admin'
 gem 'roo'
 gem 'jquery-datatables-rails', '~> 3.2.0'
-gem 'capistrano',  '~> 3.1'
-gem 'capistrano-rails', '~> 1.1'
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+end
 
 group :development, :test do
   gem 'byebug'
