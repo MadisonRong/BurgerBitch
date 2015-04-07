@@ -15,11 +15,14 @@
 ***REMOVED*** server list. The second argument is a, or duck-types, Hash and is
 ***REMOVED*** used to set extended properties on the server.
 
-server '172.16.10.163', user: 'ubuntu', roles: %w{web app}, my_property: :my_value
-set :deploy_to, "/home/***REMOVED***{fetch(:deploy_user)}/apps/***REMOVED***{fetch(:full_app_name)}"
-set :rails_env, :production
-set :enable_ssl, false
-
+server '172.16.10.163',
+  user: 'ubuntu',
+  roles: %w{web},
+  ssh_options: {
+    user: 'ubuntu',
+    keys: %w(/home/ubuntu/.ssh/id_rsa.pub),
+    forward_agent: false
+  }
 
 ***REMOVED*** Custom SSH Options
 ***REMOVED*** ==================
