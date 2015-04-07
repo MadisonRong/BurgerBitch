@@ -4,7 +4,7 @@ lock '3.3.5'
 set :application, 'BurgerBitch'
 set :deploy_user, 'ubuntu'
 set :repo_url, 'git@github.com:MadisonRong/BurgerBitch.git'
-set :branch, 'master-deploy'
+set :branch, 'master'
 set :stage, :production
 set :rails_env, :production
 set :deploy_to, '/home/ubuntu/app/BurgerBitch'
