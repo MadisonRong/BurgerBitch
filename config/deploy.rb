@@ -53,7 +53,7 @@ namespace :deploy do
    end
  end
 
- after :publishing, :import do
+ after :publishing, :import_data do
    on roles(:web), in: :groups, limit: 3, wait: 10 do
       run "cd #{release_path}"
       run "bundle exec rake db:drop RAILS_ENV=production"
