@@ -53,15 +53,15 @@ namespace :deploy do
    end
  end
 
- after :publishing, :import_data do
-   on roles(:web), in: :groups, limit: 3, wait: 10 do
-      run "cd ***REMOVED***{release_path}"
-      run "bundle exec rake db:drop RAILS_ENV=production"
-      run "bundle exec rake db:create RAILS_ENV=production"
-      run "bundle exec rake db:migrate RAILS_ENV=production"
-      run "bundle exec rake db:seed RAILS_ENV=production"
-      run "bundle exec rake input_data:input RAILS_ENV=production"
-   end
- end
+ ***REMOVED*** after :publishing, :import_data do
+ ***REMOVED***   on roles(:web), in: :groups, limit: 3, wait: 10 do
+ ***REMOVED***      run "cd ***REMOVED***{release_path}"
+ ***REMOVED***      run "bundle exec rake db:drop RAILS_ENV=production"
+ ***REMOVED***      run "bundle exec rake db:create RAILS_ENV=production"
+ ***REMOVED***      run "bundle exec rake db:migrate RAILS_ENV=production"
+ ***REMOVED***      run "bundle exec rake db:seed RAILS_ENV=production"
+ ***REMOVED***      run "bundle exec rake input_data:input RAILS_ENV=production"
+ ***REMOVED***   end
+ ***REMOVED*** end
 
 end
