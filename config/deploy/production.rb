@@ -15,11 +15,14 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '172.16.10.163', user: 'ubuntu', roles: %w{web app}, my_property: :my_value
-set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
-set :rails_env, :production
-set :enable_ssl, false
-
+server '172.16.10.163',
+  user: 'ubuntu',
+  roles: %w{web},
+  ssh_options: {
+    user: 'ubuntu',
+    keys: %w(/home/ubuntu/.ssh/id_rsa.pub),
+    forward_agent: false
+  }
 
 # Custom SSH Options
 # ==================
