@@ -1,8 +1,16 @@
 # config valid only for current version of Capistrano
 lock '3.3.5'
 
-set :application, 'BrugerBitch'
+set :application, 'BurgerBitch'
+set :deploy_user, 'ubuntu'
 set :repo_url, 'git@github.com:MadisonRong/BurgerBitch.git'
+set :branch, 'master-deploy'
+set :stage, :production
+set :rails_env, :production
+set :deploy_to, '/home/ubuntu/app/BurgerBitch'
+
+set :rvm_ruby_string, '1.26.11'
+
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -36,13 +44,13 @@ set :repo_url, 'git@github.com:MadisonRong/BurgerBitch.git'
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+ after :restart, :clear_cache do
+   on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-    end
-  end
+   end
+ end
 
 end
