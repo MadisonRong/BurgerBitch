@@ -7,15 +7,24 @@ end
 
 def test_excel
   require 'roo'
-    sheets = Roo::Excelx.new(File.expand_path(File.join(File.dirname(__FILE__),"dishes.xlsx")))
-    sheets_count = sheets.sheets.count - 1
-    0.upto(sheets_count) do |sheet|
-      sheets.default_sheet = sheets.sheets[sheet]
-      row_count = sheets.last_row - 1
-      3.upto(row_count) do |row|
-        next if sheets.cell(row, 1).nil?
-        puts "***REMOVED***{sheets.cell(row, 1)} ***REMOVED***{sheets.cell(row, 2).sub('元', '')} ***REMOVED***{sheets.cell(row, 3)}"
-        puts DishType.find_or_create_by(name: sheets.cell(row, 3)).id
-      end
+  s = Roo::Excelx.new(File.expand_path(File.join(File.dirname(__FILE__),"dishes.xlsx")))
+  sheets_count = s.sheets.count - 1
+  0.upto(sheets_count) do |sheet|
+    s.default_sheet = s.sheets[sheet]
+    row_count = s.last_row - 1
+    ***REMOVED*** create restaurant
+    restaurant = Restaurant.create!(name: s.cell(1,1), phone: s.cell(s.last_row, 1))
+    3.upto(row_count) do |row|
+      next if s.cell(row, 1).nil?
+      ***REMOVED*** create dish
+      puts "***REMOVED***{s.cell(row, 1)} ***REMOVED***{s.cell(row, 2).sub('元', '')} ***REMOVED***{s.cell(row, 3)}"
+      Dish.create!(
+        name: s.cell(row, 1), 
+        price: s.cell(row, 2).sub('元', '').to_i, 
+        dish_type_id: DishType.find_or_create_by(name: s.cell(row, 3)).id,
+        restaurant_id: restaurant.id
+      )
     end
+  end
 end
+
