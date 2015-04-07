@@ -38,23 +38,23 @@ DishType.create!(name: "河粉")
 DishType.create!(name: "米粉")
 DishType.create!(name: "意粉类")
 ***REMOVED*** dish
-require 'roo'
-s = Roo::Excelx.new("/Users/MadisonRong/BurgerBitch/db/dishes.xlsx")
-sheets_count = s.sheets.count - 1
-0.upto(sheets_count) do |sheet|
-  s.default_sheet = s.sheets[sheet]
-  row_count = s.last_row - 1
-  ***REMOVED*** create restaurant
-  restaurant = Restaurant.create!(name: s.cell(1,1), phone: s.cell(s.last_row, 1))
-  3.upto(row_count) do |row|
-    next if s.cell(row, 1).nil?
-    ***REMOVED*** create dish
-    puts "***REMOVED***{s.cell(row, 1)} ***REMOVED***{s.cell(row, 2).sub('元', '')} ***REMOVED***{s.cell(row, 3)}"
-    Dish.create!(
-      name: s.cell(row, 1), 
-      price: s.cell(row, 2).sub('元', '').to_i, 
-      dish_type_id: DishType.find_or_create_by(name: s.cell(row, 3)).id,
-      restaurant_id: restaurant.id
-    )
-  end
-end
+***REMOVED*** require 'roo'
+***REMOVED*** s = Roo::Excelx.new("BurgerBitch/db/dishes.xlsx")
+***REMOVED*** sheets_count = s.sheets.count - 1
+***REMOVED*** 0.upto(sheets_count) do |sheet|
+***REMOVED***   s.default_sheet = s.sheets[sheet]
+***REMOVED***   row_count = s.last_row - 1
+***REMOVED***   ***REMOVED*** create restaurant
+***REMOVED***   restaurant = Restaurant.create!(name: s.cell(1,1), phone: s.cell(s.last_row, 1))
+***REMOVED***   3.upto(row_count) do |row|
+***REMOVED***     next if s.cell(row, 1).nil?
+***REMOVED***     ***REMOVED*** create dish
+***REMOVED***     puts "***REMOVED***{s.cell(row, 1)} ***REMOVED***{s.cell(row, 2).sub('元', '')} ***REMOVED***{s.cell(row, 3)}"
+***REMOVED***     Dish.create!(
+***REMOVED***       name: s.cell(row, 1), 
+***REMOVED***       price: s.cell(row, 2).sub('元', '').to_i, 
+***REMOVED***       dish_type_id: DishType.find_or_create_by(name: s.cell(row, 3)).id,
+***REMOVED***       restaurant_id: restaurant.id
+***REMOVED***     )
+***REMOVED***   end
+***REMOVED*** end

@@ -7,7 +7,7 @@ end
 
 def test_excel
   require 'roo'
-    sheets = Roo::Excelx.new("/Users/MadisonRong/BurgerBitch/db/dishes.xlsx")
+    sheets = Roo::Excelx.new(File.expand_path(File.join(File.dirname(__FILE__),"dishes.xlsx")))
     sheets_count = sheets.sheets.count - 1
     0.upto(sheets_count) do |sheet|
       sheets.default_sheet = sheets.sheets[sheet]
