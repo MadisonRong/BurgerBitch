@@ -15,8 +15,7 @@ require 'capistrano/deploy'
 ***REMOVED***   https://github.com/capistrano/rails
 ***REMOVED***   https://github.com/capistrano/passenger
 ***REMOVED***
-***REMOVED*** require 'capistrano/rvm'
-require 'capistrano/rails'
+require 'capistrano/rvm'
 ***REMOVED*** require 'capistrano/rbenv'
 ***REMOVED*** require 'capistrano/chruby'
 require 'capistrano/bundler'
