@@ -6,7 +6,6 @@
   </div>
 
   <!-- Table -->
-    <% if !@orders.blank? %>
       <table id="orders" class="table table-hover">
       <thead>
         <tr>
@@ -17,27 +16,33 @@
           <th>时间</th>
         </tr>
         </thead>
-        <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td>
-              <%= order.id %>
-            </td>
-            <td><%= order.dish.name %></td>
-            <td><%= order.dish.price %></td>
-            <td><%= order.user.name %></td>
-            <td><%= order.created_at %></td>
-          </tr>
-        <% end %>
-        </tbody>
       </table>
-    <% else %>
-      <h1>没有数据哦</h1>
-      <h3>no data...</h3>
-    <% end %>
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('***REMOVED***orders').DataTable();
+    $('***REMOVED***orders').DataTable({
+        "processing": true,
+        // "serverSide": true,
+        "ajax": "<%= all_json_admin_orders_path %>",
+        "columns": [
+          { "data": "id" },
+          { "data": "name" },
+          { "data": "price" },
+          { "data": "user" },
+          { "data": "time" }
+        ]
+    });
+    $('***REMOVED***orders tbody').on('click', 'tr', function () {
+        // var id = this.id;
+        // var index = $.inArray(id, selected);
+ 
+        // if ( index === -1 ) {
+        //     selected.push( id );
+        // } else {
+        //     selected.splice( index, 1 );
+        // }
+ 
+        $(this).toggleClass('selected');
+    } );
   } );
 </script>

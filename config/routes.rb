@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :orders do
       collection do
         get 'all'
+        get 'all_json'
       end
     end
   end
