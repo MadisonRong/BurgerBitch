@@ -8,6 +8,11 @@ class Admin::OrdersController < Admin::ApplicationController
   end
 
   def all
-    @orders = Order.get_all
+    # @orders = Order.get_all
+  end
+
+  def all_json
+    @orders_hash = Order.get_all(params)
+    render json: @orders_hash
   end
 end

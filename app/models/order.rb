@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
     Order.create!(user_id: current_user_id, dish_id: dish_id)
   }
 
-  # 前台查看个人的订餐亲痛苦
+  # 前台查看个人的订餐情况
   scope :get_orders, ->(current_user_id){
     orders = User.find(current_user_id).orders.includes("dish")
     orders_array = Array.new
@@ -30,6 +30,7 @@ class Order < ActiveRecord::Base
       if times[4] < times[1]
         order_count = User.find(current_user_id).orders.between_times(Time.parse(times[0]).utc, Time.parse(times[1]).utc).count
         puts "lunch"
+        return order_count
       end
     else
       # 未到午饭订餐时间
@@ -43,6 +44,7 @@ class Order < ActiveRecord::Base
       if times[4] < times[3]
         order_count = User.find(current_user_id).orders.between_times(Time.parse(times[2]).utc, Time.parse(times[3]).utc).count
         puts "dinner"
+        return order_count
       else
         # 已过了晚饭订餐时间
         return -3
@@ -130,8 +132,27 @@ class Order < ActiveRecord::Base
   }
 
   # 查看历史记录
-  scope :get_all, ->{
-    orders = Order.includes("dish", "user")
+  scope :get_all, ->(params){
+    orders = Order.includes("dish", "user").limit(params[:length]).offset(params[:start])
+    orders_count = Order.includes("dish", "user").count
+    data = Array.new
+    orders.each do |order|
+      order_hash = Hash.new
+      order_hash[:id] = order.id
+      order_hash[:name] = order.dish.name
+      order_hash[:price] = order.dish.price
+      order_hash[:user] = order.user.name
+      order_hash[:time] = order.created_at
+      data << order_hash
+    end
+    result_hash = Hash.new
+    result_hash[:draw] = params[:draw]
+    result_hash[:start] = params[:start]
+    result_hash[:length] = params[:length]
+    result_hash[:recordTotal] = orders_count
+    result_hash[:resordFiltered] = orders_count
+    result_hash[:data] = data
+    return result_hash
   }
 
   # 获取午饭，晚饭时间
