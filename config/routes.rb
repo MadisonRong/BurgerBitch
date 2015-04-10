@@ -5,13 +5,14 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords',
     registrations: 'admin/registrations'
   }
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    passwords: 'users/passwords',
-    registrations: 'users/registrations'
-  }
+  ***REMOVED*** devise_for :users, controllers: {
+  ***REMOVED***   sessions: 'users/sessions',
+  ***REMOVED***   passwords: 'users/passwords',
+  ***REMOVED***   registrations: 'users/registrations'
+  ***REMOVED*** }
 
   root 'welcome***REMOVED***index'
+  get '/authentication' => 'authentication***REMOVED***index'
 
   resource :user do
     resources :orders
