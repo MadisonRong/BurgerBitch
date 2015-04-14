@@ -3,8 +3,8 @@ class OrdersController < BurgerBitchController
   ***REMOVED*** before_action :check_order, only:[:new]
 
   def index
-    @orders = Order.get_orders(current_user.id)
-    @sum = Order.sum_this_month(current_user.id)
+    @orders = Order.get_orders(User.get_id(cookies[:burgerbitch]))
+    @sum = Order.sum_this_month(User.get_id(cookies[:burgerbitch]))
   end
 
   def new
@@ -13,12 +13,12 @@ class OrdersController < BurgerBitchController
   end
 
   def create
-    @result = Order.make_an_order(params[:dish_id], current_user.id)
+    @result = Order.make_an_order(params[:dish_id], User.get_id(cookies[:burgerbitch]))
   end
   
   private
    def check_order
-    @order_count = Order.has_order?(current_user.id)
+    @order_count = Order.has_order?(User.get_id(cookies[:burgerbitch]))
     if @order_count != 0
       render 'tips'
       return
