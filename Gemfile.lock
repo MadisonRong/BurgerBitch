@@ -262,10 +262,10 @@ DEPENDENCIES
   by_star (~> 2.2.1)
   byebug (~> 4.0.5)
   cancan (~> 1.6.10)
-  capistrano (~> 3.4.0)
-  capistrano-bundler (~> 1.1.4)
-  capistrano-rails (~> 1.1.2)
-  capistrano-rvm (~> 0.1.2)
+  capistrano
+  capistrano-bundler
+  capistrano-rails
+  capistrano-rvm
   carrierwave (~> 0.10.0)
   chronic (~> 0.10.2)
   coffee-rails (~> 4.1.0)
