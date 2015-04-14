@@ -141,7 +141,7 @@ class Order < ActiveRecord::Base
       order_hash[:id] = order.id
       order_hash[:name] = order.dish.name
       order_hash[:price] = order.dish.price
-      order_hash[:user] = order.user.name
+      order_hash[:user] = order.user.nickname
       order_hash[:time] = order.created_at
       data << order_hash
     end
