@@ -20,3 +20,9 @@
 @import "bootstrap";
 @import "dataTables/jquery.dataTables";
 @import "dataTables/extras/dataTables.responsive";
+.radio{
+    margin-top: 0;
+    input[type="radio"]{
+      margin-left: -6px;
+    }
+}

@@ -1,7 +1,7 @@
 <% if !@dishes.blank? %>
   <%= form_tag user_orders_path do %>
     <% @dishes.each do |k, v| %>
-      <%= k %>
+      <div><%= k %></div>
       <table class="table table-hover">
         <tr>
           <th>***REMOVED***</th>

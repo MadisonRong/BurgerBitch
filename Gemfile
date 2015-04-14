@@ -24,6 +24,7 @@ gem 'roo', '~> 1.13.2'
 gem 'jquery-datatables-rails', '~> 3.2.0'
 gem 'rest-client'
 gem 'faraday', '~> 0.9.1'
+gem 'redis', '~> 3.2.1'
 
 group :production do
   gem 'capistrano', '~> 3.4.0'

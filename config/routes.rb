@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resource :user do
     resources :orders
+    delete 'logout' => 'sessions***REMOVED***destroy'
   end
 
   resource :restaurant do
