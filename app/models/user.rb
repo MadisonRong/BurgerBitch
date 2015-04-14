@@ -27,4 +27,9 @@ class User < ActiveRecord::Base
     email = user_info["email"]
     BurgerBitchOAuth.set_token(email, oauth_message)
   end
+
+  def self.get_id(email)
+    user = User.find_by_email(email)
+    return user.id
+  end
 end

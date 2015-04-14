@@ -38,12 +38,7 @@ module SessionsHelper
   end
   
   def create_cookies(user_info)
-    cookies.permanent[:burgerbitch] = {
-      value: user_info["email"],
-      expires: 1.week.from_now,
-      domain: '172.16.10.26'
-    }
-
+    cookies.permanent[:burgerbitch] = user_info["email"]
   end
 
   def destory_cookies
