@@ -1,5 +1,5 @@
 ***REMOVED*** config valid only for current version of Capistrano
-lock '3.3.5'
+lock '3.4.0'
 
 set :application, 'BurgerBitch'
 set :deploy_user, 'ubuntu'
