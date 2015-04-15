@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
 
   # 前台查看个人的订餐情况
   scope :get_orders, ->(current_user_id){
-    orders = User.find(current_user_id).orders.includes("dish")
+    orders = User.find(current_user_id).orders.includes("dish").order("id desc")
     orders_array = Array.new
     orders.each do |order|
       order_hash = Hash.new
