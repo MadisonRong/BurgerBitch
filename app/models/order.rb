@@ -65,7 +65,7 @@ class Order < ActiveRecord::Base
       orders = Order.includes("dish", "user").between_times(Time.parse(times[0]).utc, Time.parse(times[1]).utc).order("dish_id")
     end
     ***REMOVED*** 晚饭时间
-    if times[4] < times[3]
+    if times[4] > times[1] && times[4] < times[3]
       orders = Order.includes("dish", "user").between_times(Time.parse(times[2]).utc, Time.parse(times[3]).utc).order("dish_id")
     end
     orders = Order.includes("dish", "user").between_times(Time.parse('2015-04-02 00:00:00').utc, Time.parse('2015-04-02 10:00:00').utc).order("dish_id")

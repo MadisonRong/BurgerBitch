@@ -15,6 +15,11 @@ class OrdersController < BurgerBitchController
   def create
     @result = Order.make_an_order(params[:dish_id], User.get_id(cookies[:burgerbitch]))
   end
+
+  def destroy
+    Order.find(params[:id]).destroy
+    redirect_to action: :index
+  end
   
   private
    def check_order
