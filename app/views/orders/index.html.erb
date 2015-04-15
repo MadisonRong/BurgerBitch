@@ -14,6 +14,7 @@
           <th>名字</th>
           <th>价钱</th>
           <th>时间</th>
+          <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -25,6 +26,11 @@
             <td><%= order[:name] %></td>
             <td><%= order[:price] %></td>
             <td><%= order[:time] %></td>
+            <td>
+              <% if can_del?(order[:time]) %>
+                <%= button_to "取消", user_order_path(order[:id]), method: :delete, class: "btn btn-danger", data:{confirm: "是否确定要取消订单？"} %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
@@ -34,6 +40,7 @@
       <h3>no data...</h3>
     <% end %>
 </div>
+<%= render 'shared/pay' %>
 <script type="text/javascript">
   $(document).ready(function() {
     $('***REMOVED***orders').DataTable();
