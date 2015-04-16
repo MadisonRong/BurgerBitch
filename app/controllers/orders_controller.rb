@@ -14,6 +14,7 @@ class OrdersController < BurgerBitchController
 
   def create
     @result = Order.make_an_order(params[:dish_id], User.get_id(cookies[:burgerbitch]))
+    @dish = Dish.find(params[:dish_id])
   end
 
   def destroy
