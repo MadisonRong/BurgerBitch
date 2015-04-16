@@ -85,7 +85,7 @@ class Order < ActiveRecord::Base
           if order.dish.id == dish[:id] && order.dish.price == dish[:price]
             # 找到相同的菜式，数量+1，加入用户名字，把标识设为true
             dish[:count] += 1
-            dish[:users] << order.user.name
+            dish[:users] << order.user.nickname
             sum += order.dish.price
             flag = true
             break
