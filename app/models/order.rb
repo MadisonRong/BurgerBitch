@@ -61,14 +61,14 @@ class Order < ActiveRecord::Base
     times = get_times
     orders = Array.new
     # 午饭时间
-    if times[4] < times[1]
+    if Time.parse(times[4]).to_i < Time.parse(times[1]).to_i
       orders = Order.includes("dish", "user").between_times(Time.parse(times[0]).utc, Time.parse(times[1]).utc).order("dish_id")
     end
     # 晚饭时间
-    if times[4] > times[1] && times[4] < times[3]
+    if Time.parse(times[4]).to_i > Time.parse(times[1]).to_i && Time.parse(times[4]).to_i < Time.parse(times[3]).to_i
       orders = Order.includes("dish", "user").between_times(Time.parse(times[2]).utc, Time.parse(times[3]).utc).order("dish_id")
     end
-    orders = Order.includes("dish", "user").between_times(Time.parse('2015-04-02 00:00:00').utc, Time.parse('2015-04-02 10:00:00').utc).order("dish_id")
+    # orders = Order.includes("dish", "user").between_times(Time.parse('2015-04-02 00:00:00').utc, Time.parse('2015-04-02 10:00:00').utc).order("dish_id")
     sum = 0
     result_hash = Hash.new
     result_array = Array.new
@@ -98,7 +98,7 @@ class Order < ActiveRecord::Base
           dish_hash[:dish_name] = order.dish.name
           dish_hash[:count] = 1
           dish_hash[:price] = order.dish.price
-          dish_hash[:users] = Array[order.user.name]
+          dish_hash[:users] = Array[order.user.nickname]
           dishes_hash << dish_hash
           sum += order.dish.price
         end
@@ -111,7 +111,7 @@ class Order < ActiveRecord::Base
         dish_hash[:dish_name] = order.dish.name
         dish_hash[:count] = 1
         dish_hash[:price] = order.dish.price
-        dish_hash[:users] = Array[order.user.name]
+        dish_hash[:users] = Array[order.user.nickname]
         dish_array << dish_hash
         restaurant_hash[:id] = restaurant.id
         restaurant_hash[:restaurant_name] = restaurant.name
