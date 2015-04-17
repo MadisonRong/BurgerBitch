@@ -2,14 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :admins, controllers: {
     sessions: 'admin/sessions',
-    passwords: 'admin/passwords',
-    registrations: 'admin/registrations'
+    passwords: 'admin/passwords'
   }
-  # devise_for :users, controllers: {
-  #   sessions: 'users/sessions',
-  #   passwords: 'users/passwords',
-  #   registrations: 'users/registrations'
-  # }
 
   root 'welcome#index'
   get '/authentication' => 'authentication#index'
