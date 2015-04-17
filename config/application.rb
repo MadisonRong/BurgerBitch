@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module BurgerBitch
   class Application < Rails::Application
+
+    OAUTH2 = YAML.load_file(File.expand_path("../burger_bitch_oauth2.yml", __FILE__))[Rails.env]
+
     ***REMOVED*** Settings in config/environments/* take precedence over those specified here.
     ***REMOVED*** Application configuration should go into files in config/initializers
     ***REMOVED*** -- all .rb files in that directory are automatically loaded.
