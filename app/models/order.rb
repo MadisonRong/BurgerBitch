@@ -159,10 +159,10 @@ class Order < ActiveRecord::Base
     def self.get_times
       time = Time.now
       now_time = time.to_s
-      time1 = time.strftime("%Y-%m-%d 11:00:00")
-      time2 = time.strftime("%Y-%m-%d 14:00:00")
-      time3 = time.strftime("%Y-%m-%d 17:00:00")
-      time4 = time.strftime("%Y-%m-%d 18:00:00")
+      time1 = time.strftime("%Y-%m-%d 10:00:00")
+      time2 = time.strftime("%Y-%m-%d 11:30:00")
+      time3 = time.strftime("%Y-%m-%d 16:00:00")
+      time4 = time.strftime("%Y-%m-%d 17:30:00")
       return Array[time1, time2, time3, time4, now_time]
     end
 
