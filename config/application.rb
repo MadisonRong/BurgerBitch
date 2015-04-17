@@ -6,11 +6,10 @@ require 'rails/all'
 ***REMOVED*** you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module BurgerBitch
-  class Application < Rails::Application
-
     OAUTH2 = YAML.load_file(File.expand_path("../burger_bitch_oauth2.yml", __FILE__))[Rails.env]
 
+module BurgerBitch
+  class Application < Rails::Application
     ***REMOVED*** Settings in config/environments/* take precedence over those specified here.
     ***REMOVED*** Application configuration should go into files in config/initializers
     ***REMOVED*** -- all .rb files in that directory are automatically loaded.
