@@ -41,7 +41,16 @@ module SessionsHelper
     cookies.permanent[:burgerbitch] = user_info["email"]
   end
 
-  def destory_cookies
+  # 删除redis里相关的数据
+  def destroy_data
+    email = cookies[:burgerbitch]
+    redis = BurgerBitchRedisServer.redis
+    redis.del(email)
+    redis.del("#{email}-access_token")
+    redis.del("#{email}-refresh_token")
+  end
+
+  def destroy_cookies
     cookies.delete(:burgerbitch)
   end
 end
