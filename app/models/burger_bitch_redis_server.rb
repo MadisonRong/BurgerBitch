@@ -1,6 +1,6 @@
 class BurgerBitchRedisServer < ActiveRecord::Base
   def self.redis
     require 'redis'
-    return Redis.new
+    return @redis ||= Redis.new
   end
 end
