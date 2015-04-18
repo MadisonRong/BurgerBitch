@@ -7,12 +7,10 @@ module SessionsHelper
       unless redis.get("#{email}-access_token").nil?
         return true
       else
-        binding.pry
         response = BurgerBitchOAuth.refresh_token(
           redis.get("#{email}")["access_token"],
           redis.get("#{email}-refresh_token")
         )
-        binding.pry
         BurgerBitchOAuth.set_token(email, response)
         return true
       end
@@ -26,6 +24,10 @@ module SessionsHelper
       store_location
       redirect_to root_path
     end
+  end
+
+  def current_user
+    @current_user ||= User.find_by_email(cookies[:burgerbitch])
   end
 
   def store_location
