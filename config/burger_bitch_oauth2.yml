@@ -1,5 +1,14 @@
-client_id: '7a9cef187baa31ef8b8dcf329fd86160b07abbc85728ebe0eb4c4be726af114c'
-client_secret: '4211b5c0b218d8edcc7d36b9bb8d1a479831c1f6d8b6757c9818e6077e314102'
-redirect_uri: 'http://fan.glassx.cn/authentication'
-glassx_oauth: 'http://glassx.cn/oauth/token'
-get_code: 'http://glassx.cn/oauth/authorize?response_type=code&client_id=7a9cef187baa31ef8b8dcf329fd86160b07abbc85728ebe0eb4c4be726af114c&redirect_uri=http://fan.glassx.cn/authentication'
+default: &default
+  client_id: '7a9cef187baa31ef8b8dcf329fd86160b07abbc85728ebe0eb4c4be726af114c'
+  client_secret: '4211b5c0b218d8edcc7d36b9bb8d1a479831c1f6d8b6757c9818e6077e314102'
+  redirect_uri: 'http://fan.glassx.cn/authentication'
+  glassx_oauth: 'http://glassx.cn/oauth/token'
+  get_code: 'http://glassx.cn/oauth/authorize?response_type=code&client_id=7a9cef187baa31ef8b8dcf329fd86160b07abbc85728ebe0eb4c4be726af114c&redirect_uri=http://fan.glassx.cn/authentication'
+
+development:
+  <<: *default
+
+
+production:
+  <<: *default
+
