@@ -85,7 +85,7 @@ class Order < ActiveRecord::Base
           if order.dish.id == dish[:id] && order.dish.price == dish[:price]
             ***REMOVED*** 找到相同的菜式，数量+1，加入用户名字，把标识设为true
             dish[:count] += 1
-            dish[:users] << order.user.nickname
+            dish[:users] << order.user.real_name
             sum += order.dish.price
             flag = true
             break
@@ -98,7 +98,7 @@ class Order < ActiveRecord::Base
           dish_hash[:dish_name] = order.dish.name
           dish_hash[:count] = 1
           dish_hash[:price] = order.dish.price
-          dish_hash[:users] = Array[order.user.nickname]
+          dish_hash[:users] = Array[order.user.real_name]
           dishes_hash << dish_hash
           sum += order.dish.price
         end
@@ -111,7 +111,7 @@ class Order < ActiveRecord::Base
         dish_hash[:dish_name] = order.dish.name
         dish_hash[:count] = 1
         dish_hash[:price] = order.dish.price
-        dish_hash[:users] = Array[order.user.nickname]
+        dish_hash[:users] = Array[order.user.real_name]
         dish_array << dish_hash
         restaurant_hash[:id] = restaurant.id
         restaurant_hash[:restaurant_name] = restaurant.name
@@ -141,7 +141,7 @@ class Order < ActiveRecord::Base
       order_hash[:id] = order.id
       order_hash[:name] = order.dish.name
       order_hash[:price] = order.dish.price
-      order_hash[:user] = order.user.nickname
+      order_hash[:user] = order.user.real_name
       order_hash[:time] = order.created_at
       data << order_hash
     end
