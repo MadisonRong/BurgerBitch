@@ -10,7 +10,6 @@ class UsersController < BurgerBitchController
 
   def update
     @user = User.find(current_user.id)
-    binding.pry
     if @user.update_attribute(:real_name, ERB::Util.html_escape(user_params[:real_name]))
       redirect_back_or root_path
     else
