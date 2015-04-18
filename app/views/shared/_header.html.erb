@@ -1,2 +1,8 @@
-<div class='logo'><%= image_tag("logo.png") %></div>
-<div class="subTitle">burger bitch</div>
+<div class='logo'>
+  <%= link_to "http://glassx.cn/" do %>
+    <%= image_tag("logo.png") %>
+  <% end %>
+</div>
+<div class="subTitle">
+  <%= link_to("burger bitch", root_path) %>
+</div>

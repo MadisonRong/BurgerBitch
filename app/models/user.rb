@@ -23,13 +23,20 @@ class User < ActiveRecord::Base
         email: user_info["email"],
         avatar_url: user_info["avatar_url"]
       )
+    else 
+      user.update_attribute(:nickname, user_info["nickname"])
     end
     email = user_info["email"]
     BurgerBitchOAuth.set_token(email, oauth_message)
   end
 
-  def self.get_id(email)
+  def self.get_id_by_email(email)
     user = User.find_by_email(email)
     return user.id
+  end
+
+  def self.get_name_by_email(email)
+    user = User.find_by_email(email)
+    return user.real_name
   end
 end
