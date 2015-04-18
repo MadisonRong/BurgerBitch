@@ -25,7 +25,7 @@ class OrdersController < BurgerBitchController
   private
    def check_order
     @order_count = Order.has_order?(User.get_id(cookies[:burgerbitch]))
-    if @order_count != 0
+    if @order_count < 0
       render 'tips'
       return
     end
