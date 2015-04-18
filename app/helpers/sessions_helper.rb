@@ -38,7 +38,10 @@ module SessionsHelper
   end
   
   def create_cookies(user_info)
-    cookies.permanent[:burgerbitch] = user_info["email"]
+    cookies.permanent[:burgerbitch] = {
+      value: user_info["email"],
+      domain: '/'
+    }
   end
 
   # 删除redis里相关的数据
