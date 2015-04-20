@@ -16,6 +16,9 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  config.excluded_models << "BurgerBitchOAuth"
+  config.excluded_models << "BurgerBitchRedisServer"
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
