@@ -1,5 +1,6 @@
 class Restaurant < ActiveRecord::Base
   has_many :dishes
+  has_many :orders, through: :dishes
 
   ***REMOVED*** 获取所有的餐厅
   scope :get_restaurant, ->{ select(:id, :name).all }
