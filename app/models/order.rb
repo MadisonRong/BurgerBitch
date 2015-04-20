@@ -58,16 +58,16 @@ class Order < ActiveRecord::Base
   }
 
   # 查看订餐情况
-  scope :check_it_out, ->(){
+  scope :check_it_out, ->(date, meal){
     times = get_times
     orders = Array.new
     # 午饭时间
-    if Time.parse(times[4]).to_i < Time.parse(times[1]).to_i
-      orders = Order.includes("dish", "user").between_times(Time.parse(times[0]).utc, Time.parse(times[1]).utc).order("dish_id")
+    if meal == "0"
+      orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + " 10:00").utc, Time.parse(date + " 11:30").utc).order("dish_id")
     end
     # 晚饭时间
-    if Time.parse(times[4]).to_i > Time.parse(times[1]).to_i && Time.parse(times[4]).to_i < Time.parse(times[3]).to_i
-      orders = Order.includes("dish", "user").between_times(Time.parse(times[2]).utc, Time.parse(times[3]).utc).order("dish_id")
+    if meal =="1"
+      orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + " 16:00").utc, Time.parse(date + " 17:30").utc).order("dish_id")
     end
     # orders = Order.includes("dish", "user").between_times(Time.parse('2015-04-02 00:00:00').utc, Time.parse('2015-04-02 10:00:00').utc).order("dish_id")
     sum = 0
@@ -75,7 +75,7 @@ class Order < ActiveRecord::Base
     result_array = Array.new
     orders.each do |order|
       # 当前订单中菜式对应的餐馆
-      restaurant = order.dish.restaurant
+      restaurant = order.restaurant
       iterator = has_restaurant?(result_array, restaurant.id)
       # 当前餐馆存在列表里时，往对应餐馆对象的菜式列表加入数据
       if iterator >= 0
