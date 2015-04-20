@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :dish
+  has_one :restaurant, through: :dish
 
   # 下单
   scope :make_an_order, ->(dish_id, current_user_id){ 
