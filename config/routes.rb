@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       collection do
         get 'all'
         get 'all_json'
+        get 'ajax'
       end
     end
   end
