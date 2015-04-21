@@ -11,7 +11,8 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>名字</th>
+          <th>餐厅名字</th>
+          <th>菜式名字</th>
           <th>价钱</th>
           <th>时间</th>
           <th>操作</th>
@@ -23,6 +24,7 @@
             <td>
               <%= @orders.index(order) + 1 %>
             </td>
+            <td><%= order[:restaurant] %></td>
             <td><%= order[:name] %></td>
             <td><%= order[:price] %></td>
             <td><%= order[:time] %></td>
