@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
   <!-- Default panel contents -->
-  <div class="panel-heading">我的点餐记录</div>
+  <div class="panel-heading">所有历史点餐记录</div>
   <div class="panel-body">
     <p>...</p>
   </div>
@@ -10,6 +10,8 @@
       <thead>
         <tr>
           <th>***REMOVED***</th>
+          <th>餐厅名字</th>
+          <th>菜式名字</th>
           <th>名字</th>
           <th>价钱</th>
           <th>点菜者</th>
@@ -26,6 +28,7 @@
         "ajax": "<%= all_json_admin_orders_path %>",
         "columns": [
           { "data": "id" },
+          { "data": "restaurant" },
           { "data": "name" },
           { "data": "price" },
           { "data": "user" },

@@ -9,13 +9,14 @@ module OrdersHelper
     time1 = Time.parse(time.strftime("%Y-%m-%d 11:30:00")).to_i
     ***REMOVED*** dinner
     time2 = Time.parse(time.strftime("%Y-%m-%d 17:30:00")).to_i
+    today = Time.parse(time.strftime("%Y-%m-%d 00:00:00")).to_i
     time = time.to_i
     ***REMOVED*** 订餐时间为2pm前并且当前时间未超过2pm
-    if time < time1 && order_time < time1
+    if today < time && time < time1 && order_time < time1
       return true
     end
     ***REMOVED*** 订餐时间在2pm--6pm之间并且当前时间在2pm--6pm之间
-    if order_time > time1 && order_time < time2 && time > time1 && time < time2
+    if today < time && order_time > time1 && order_time < time2 && time > time1 && time < time2
       return true
     end
     return false

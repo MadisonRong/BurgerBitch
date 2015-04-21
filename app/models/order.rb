@@ -10,11 +10,12 @@ class Order < ActiveRecord::Base
 
   ***REMOVED*** 前台查看个人的订餐情况
   scope :get_orders, ->(current_user_id){
-    orders = User.find(current_user_id).orders.includes("dish").order("id desc")
+    orders = User.find(current_user_id).orders.includes("dish", "restaurant").order("id desc")
     orders_array = Array.new
     orders.each do |order|
       order_hash = Hash.new
       order_hash[:id] = order.id
+      order_hash[:restaurant] = order.restaurant.name
       order_hash[:name] = order.dish.name
       order_hash[:price] = order.dish.price
       order_hash[:time] = order.created_at
@@ -134,12 +135,13 @@ class Order < ActiveRecord::Base
 
   ***REMOVED*** 查看历史记录
   scope :get_all, ->(params){
-    orders = Order.includes("dish", "user").limit(params[:length]).offset(params[:start])
-    orders_count = Order.includes("dish", "user").count
+    orders = Order.includes("dish", "user", "restaurant").limit(params[:length]).offset(params[:start])
+    orders_count = Order.includes("dish", "user", "restaurant").count
     data = Array.new
     orders.each do |order|
       order_hash = Hash.new
       order_hash[:id] = order.id
+      order_hash[:restaurant] = order.restaurant.name
       order_hash[:name] = order.dish.name
       order_hash[:price] = order.dish.price
       order_hash[:user] = order.user.real_name
