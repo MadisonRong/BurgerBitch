@@ -14,9 +14,13 @@ class AuthenticationController < ApplicationController
     ***REMOVED*** response2 = conn.get "http://api.glassx.cn/v1/users.json", { "access_token" => cookies[:burgerbitch] }
     ***REMOVED*** rest_client
     response = BurgerBitchOAuth.get_token(params[:code])
+    p "get token is ok..."
     user_info = User.get_user_info(response["access_token"])
+    p "get user info is ok..."
     create_cookies(user_info)
+    p "create cookies is ok..."
     User.add_or_update_user(response, user_info)
+    p "add or update user is ok...."
     redirect_back_or root_path
   end
 
