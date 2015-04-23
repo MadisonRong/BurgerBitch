@@ -12,11 +12,11 @@ module OrdersHelper
     today = Time.parse(time.strftime("%Y-%m-%d 00:00:00")).to_i
     time = time.to_i
     # 订餐时间为2pm前并且当前时间未超过2pm
-    if today < time && time < time1 && order_time < time1
+    if today < order_time && time < time1 && order_time < time1
       return true
     end
     # 订餐时间在2pm--6pm之间并且当前时间在2pm--6pm之间
-    if today < time && order_time > time1 && order_time < time2 && time > time1 && time < time2
+    if today < order_time && order_time > time1 && order_time < time2 && time > time1 && time < time2
       return true
     end
     return false
