@@ -7,7 +7,7 @@ class Restaurant < ActiveRecord::Base
 
   ***REMOVED*** 根据餐厅获取对应菜单
   scope :get_dishes, ->(restaurant_id){
-    dishes = Restaurant.find(restaurant_id).dishes.includes("dish_type").order('id, dish_type_id, price')
+    dishes = Restaurant.find(restaurant_id).dishes.includes("dish_type").order('dish_type_id, price')
     ***REMOVED*** 分类展示菜式
     dishes_hash = Hash.new
     iterator = 0
@@ -44,8 +44,9 @@ class Restaurant < ActiveRecord::Base
           ***REMOVED*** 将当前值加入数组
           result_array << dishes[iterator]
         else
-          ***REMOVED*** 相同则直接加入数组，直至不相同才将数组赋值给hash
+          ***REMOVED*** 相同则直接加入数组，并且将数组赋值给hash
           result_array << dishes[iterator]
+          result_hash[dishes[iterator - 1].dish_type.name.to_s] = result_array
         end
         iterator += 1
         next
