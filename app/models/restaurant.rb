@@ -25,7 +25,7 @@ class Restaurant < ActiveRecord::Base
       if iterator + 1 == dishes_size
         logger.info "the last one is: #{dishes[iterator].name}##{dishes[iterator].dish_type.name}"
         # 最后一个元素，给hash赋值并加入数组，同时防止数组越界
-        if result_hash[dishes[iterator].dish_type.name.to_s].nil?
+        if dishes[iterator].dish_type.name != dishes[iterator - 1].dish_type.name && result_hash[dishes[iterator].dish_type.name.to_s].nil? 
           result_hash[dishes[iterator].dish_type.name.to_s] = result_array
         else
           result_hash[dishes[iterator].dish_type.name.to_s] += result_array
