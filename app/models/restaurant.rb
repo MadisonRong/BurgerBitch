@@ -16,12 +16,14 @@ class Restaurant < ActiveRecord::Base
     result_array = Array.new
     while iterator < dishes_size
       if iterator ==0
+        logger.info "the first one is: #{dishes[iterator].name}##{dishes[iterator].dish_type.name}"
         # 第一个元素，直接入数组
         result_array << dishes[iterator]
         iterator += 1
         next
       end
       if iterator + 1 == dishes_size
+        logger.info "the last one is: #{dishes[iterator].name}##{dishes[iterator].dish_type.name}"
         # 最后一个元素，给hash赋值并加入数组，同时防止数组越界
         if result_hash[dishes[iterator].dish_type.name.to_s].nil?
           result_hash[dishes[iterator].dish_type.name.to_s] = result_array
@@ -32,6 +34,7 @@ class Restaurant < ActiveRecord::Base
         iterator += 1
         next
       end
+      logger.info "#{dishes[iterator].name}##{dishes[iterator].dish_type.name}"
       # 判断当前菜式的类型是否与前一个不相同
       if dishes[iterator].dish_type.name != dishes[iterator - 1].dish_type.name
         # 不相同，将前面积累的数组赋值给对应的hash
