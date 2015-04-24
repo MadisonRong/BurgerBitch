@@ -1,6 +1,6 @@
 class OrdersController < BurgerBitchController
-  ***REMOVED*** before_action :check_name, only:[:new, :create]
-  ***REMOVED*** before_action :check_order, only:[:new, :create]
+  before_action :check_name, only:[:new, :create]
+  before_action :check_order, only:[:new, :create]
 
   def index
     @orders = Order.get_orders(User.get_id_by_email(cookies[:burgerbitch]))
