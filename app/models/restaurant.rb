@@ -3,7 +3,7 @@ class Restaurant < ActiveRecord::Base
   has_many :orders, through: :dishes
 
   # 获取所有的餐厅
-  scope :get_restaurant, ->{ select(:id, :name).all }
+  scope :get_restaurant, ->{ select(:id, :name).where(status: 1) }
 
   # 根据餐厅获取对应菜单
   scope :get_dishes, ->(restaurant_id){
