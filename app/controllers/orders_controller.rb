@@ -13,8 +13,15 @@ class OrdersController < BurgerBitchController
   end
 
   def create
-    @result = Order.make_an_order(params[:dish_id], User.get_id_by_email(cookies[:burgerbitch]))
-    @dish = Dish.find(params[:dish_id])
+    order = Order.make_an_order(params[:dish_id], User.get_id_by_email(cookies[:burgerbitch]))
+    redirect_to user_order_path(order)
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    if @order.user.id != current_user.id
+      render text: "you have no right to visit this page."
+    end
   end
 
   def destroy
