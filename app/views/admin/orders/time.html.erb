@@ -1,0 +1,14 @@
+<%= form_tag(time_edit_admin_orders_path, remote: true) do %>
+  <p>午饭订餐时间：</p>
+  <%= hidden_field_tag('meal', 1) %>
+  <%= time_field_tag('start_time', @lunch_start_time) %>
+  <%= time_field_tag('end_time', @lunch_end_time) %>
+  <%= submit_tag('提交') %>
+<% end %>
+<%= form_tag(time_edit_admin_orders_path, remote: true) do %>
+  <p>晚饭订餐时间：</p>
+  <%= hidden_field_tag('meal', 2) %>
+  <%= time_field_tag('start_time', @dinner_start_time) %>
+  <%= time_field_tag('end_time', @dinner_end_time) %>
+  <%= submit_tag('提交') %>
+<% end %>

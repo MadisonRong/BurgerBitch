@@ -62,13 +62,14 @@ class Order < ActiveRecord::Base
   scope :check_it_out, ->(date, meal){
     times = get_times
     orders = Array.new
+    redis = BurgerBitchRedisServer.redis
     ***REMOVED*** 午饭时间
     if meal == "0"
-      orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + " 10:00").utc, Time.parse(date + " 11:30").utc).order("dish_id")
+      orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + redis.get('lunch_start_time')).utc, Time.parse(date + redis.get('lunch_end_time')).utc).order("dish_id")
     end
     ***REMOVED*** 晚饭时间
     if meal =="1"
-      orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + " 16:00").utc, Time.parse(date + " 17:30").utc).order("dish_id")
+      orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + redis.get('dinner_start_time')).utc, Time.parse(date + redis.get('dinner_end_time')).utc).order("dish_id")
     end
     ***REMOVED*** orders = Order.includes("dish", "user").between_times(Time.parse('2015-04-02 00:00:00').utc, Time.parse('2015-04-02 10:00:00').utc).order("dish_id")
     sum = 0
@@ -162,10 +163,11 @@ class Order < ActiveRecord::Base
     def self.get_times
       time = Time.now
       now_time = time.to_s
-      time1 = time.strftime("%Y-%m-%d 10:00:00")
-      time2 = time.strftime("%Y-%m-%d 11:30:00")
-      time3 = time.strftime("%Y-%m-%d 16:00:00")
-      time4 = time.strftime("%Y-%m-%d 17:30:00")
+      redis = BurgerBitchRedisServer.redis
+      time1 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('lunch_start_time')}")
+      time2 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('lunch_end_time')}")
+      time3 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('dinner_start_time')}")
+      time4 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('dinner_end_time')}")
       return Array[time1, time2, time3, time4, now_time]
     end
 
