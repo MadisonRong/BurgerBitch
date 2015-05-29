@@ -1,7 +1,7 @@
-<% if @result %>
+<% if @order %>
   <h1>你已经成功订餐......</h1>
   <h3>you have successfully ordering......</h3>
-  <h4>本次消费：<%= @dish.price %>元</h4>
+  <h4>本次消费：<%= @order.dish.price %>元</h4>
   <%= render 'shared/pay' %>
 <% else %>
   <h1>出现了一些错误，订餐未成功，请稍候再尝试......</h1>
