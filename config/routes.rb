@@ -25,6 +25,8 @@ Rails.application.routes.draw do
         get 'all'
         get 'all_json'
         get 'ajax'
+        get 'time'
+        post 'time/edit' => 'orders#edit_time'
       end
     end
   end

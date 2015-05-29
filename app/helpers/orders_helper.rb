@@ -6,9 +6,9 @@ module OrdersHelper
     time = Time.now
     now_time = time.to_s
     # lunch
-    time1 = Time.parse(time.strftime("%Y-%m-%d 11:30:00")).to_i
+    time1 = Time.parse(time.strftime("%Y-%m-%d#{redis.get('lunch_end_time')}")).to_i
     # dinner
-    time2 = Time.parse(time.strftime("%Y-%m-%d 17:30:00")).to_i
+    time2 = Time.parse(time.strftime("%Y-%m-%d#{redis.get('dinner_end_time')}")).to_i
     today = Time.parse(time.strftime("%Y-%m-%d 00:00:00")).to_i
     time = time.to_i
     # 订餐时间为2pm前并且当前时间未超过2pm
