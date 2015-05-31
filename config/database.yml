@@ -21,13 +21,5 @@
 ***REMOVED***
 
 ***REMOVED***
-  adapter: mysql2
-  encoding: utf8
 ***REMOVED***
-  username: root
-  password: glassx
-  ***REMOVED*** for OSX 
-  ***REMOVED*** socket: /tmp/mysql.sock
-  ***REMOVED*** for Linux
-  socket: /var/run/mysqld/mysqld.sock
-  database: burger_bitch
+***REMOVED***
