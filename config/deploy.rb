@@ -31,10 +31,10 @@ set :rvm_ruby_string, '1.26.11'
 ***REMOVED*** set :pty, true
 
 ***REMOVED*** Default value for :linked_files is []
-***REMOVED*** set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 ***REMOVED*** Default value for linked_dirs is []
-***REMOVED*** set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+set :linked_dirs, fetch(:linked_dirs, []).push('bin', 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
 ***REMOVED*** Default value for default_env is {}
 ***REMOVED*** set :default_env, { path: "/opt/ruby/bin:$PATH" }
