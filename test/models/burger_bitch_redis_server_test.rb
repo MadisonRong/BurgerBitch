@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class BurgerBitchRedisServerTest < ActiveSupport::TestCase
-  ***REMOVED*** test "the truth" do
-  ***REMOVED***   assert true
-  ***REMOVED*** end
+  # test "the truth" do
+  #   assert true
+  # end
 end

@@ -12,12 +12,12 @@ def test_excel
   0.upto(sheets_count) do |sheet|
     s.default_sheet = s.sheets[sheet]
     row_count = s.last_row - 1
-    ***REMOVED*** create restaurant
+    # create restaurant
     restaurant = Restaurant.create!(name: s.cell(1,1), phone: s.cell(s.last_row, 1))
     3.upto(row_count) do |row|
       next if s.cell(row, 1).nil?
-      ***REMOVED*** create dish
-      puts "***REMOVED***{s.cell(row, 1)} ***REMOVED***{s.cell(row, 2).sub('元', '')} ***REMOVED***{s.cell(row, 3)}"
+      # create dish
+      puts "#{s.cell(row, 1)} #{s.cell(row, 2).sub('元', '')} #{s.cell(row, 3)}"
       Dish.create!(
         name: s.cell(row, 1), 
         price: s.cell(row, 2).sub('元', '').to_i, 

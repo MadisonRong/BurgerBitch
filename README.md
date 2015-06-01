@@ -1,2 +1,2 @@
-***REMOVED******REMOVED***glassx reservation assistance
-***REMOVED***dev
+##glassx reservation assistance
+#dev

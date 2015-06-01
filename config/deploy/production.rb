@@ -1,19 +1,19 @@
-***REMOVED*** Simple Role Syntax
-***REMOVED*** ==================
-***REMOVED*** Supports bulk-adding hosts to roles, the primary server in each group
-***REMOVED*** is considered to be the first unless any hosts have the primary
-***REMOVED*** property set.  Don't declare `role :all`, it's a meta role.
+# Simple Role Syntax
+# ==================
+# Supports bulk-adding hosts to roles, the primary server in each group
+# is considered to be the first unless any hosts have the primary
+# property set.  Don't declare `role :all`, it's a meta role.
 
-***REMOVED*** role :app, %w{deploy@example.com}
-***REMOVED*** role :web, %w{deploy@example.com}
-***REMOVED*** role :db,  %w{deploy@example.com}
+# role :app, %w{deploy@example.com}
+# role :web, %w{deploy@example.com}
+# role :db,  %w{deploy@example.com}
 
 
-***REMOVED*** Extended Server Syntax
-***REMOVED*** ======================
-***REMOVED*** This can be used to drop a more detailed server definition into the
-***REMOVED*** server list. The second argument is a, or duck-types, Hash and is
-***REMOVED*** used to set extended properties on the server.
+# Extended Server Syntax
+# ======================
+# This can be used to drop a more detailed server definition into the
+# server list. The second argument is a, or duck-types, Hash and is
+# used to set extended properties on the server.
 
 server '172.16.10.163',
   user: 'ubuntu',
@@ -24,28 +24,28 @@ server '172.16.10.163',
     forward_agent: false
   }
 
-***REMOVED*** Custom SSH Options
-***REMOVED*** ==================
-***REMOVED*** You may pass any option but keep in mind that net/ssh understands a
-***REMOVED*** limited set of options, consult[net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html***REMOVED***method-c-start).
-***REMOVED***
-***REMOVED*** Global options
-***REMOVED*** --------------
-***REMOVED***  set :ssh_options, {
-***REMOVED***    keys: %w(/home/rlisowski/.ssh/id_rsa),
-***REMOVED***    forward_agent: false,
-***REMOVED***    auth_methods: %w(password)
-***REMOVED***  }
-***REMOVED***
-***REMOVED*** And/or per server (overrides global)
-***REMOVED*** ------------------------------------
-***REMOVED*** server 'example.com',
-***REMOVED***   user: 'user_name',
-***REMOVED***   roles: %w{web app},
-***REMOVED***   ssh_options: {
-***REMOVED***     user: 'user_name', ***REMOVED*** overrides user setting above
-***REMOVED***     keys: %w(/home/user_name/.ssh/id_rsa),
-***REMOVED***     forward_agent: false,
-***REMOVED***     auth_methods: %w(publickey password)
-***REMOVED***     ***REMOVED*** password: 'please use keys'
-***REMOVED***   }
+# Custom SSH Options
+# ==================
+# You may pass any option but keep in mind that net/ssh understands a
+# limited set of options, consult[net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start).
+#
+# Global options
+# --------------
+#  set :ssh_options, {
+#    keys: %w(/home/rlisowski/.ssh/id_rsa),
+#    forward_agent: false,
+#    auth_methods: %w(password)
+#  }
+#
+# And/or per server (overrides global)
+# ------------------------------------
+# server 'example.com',
+#   user: 'user_name',
+#   roles: %w{web app},
+#   ssh_options: {
+#     user: 'user_name', # overrides user setting above
+#     keys: %w(/home/user_name/.ssh/id_rsa),
+#     forward_agent: false,
+#     auth_methods: %w(publickey password)
+#     # password: 'please use keys'
+#   }

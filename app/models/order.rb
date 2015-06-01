@@ -3,12 +3,12 @@ class Order < ActiveRecord::Base
   belongs_to :dish
   has_one :restaurant, through: :dish
 
-  ***REMOVED*** 下单
+  # 下单
   scope :make_an_order, ->(dish_id, current_user_id){ 
     Order.create!(user_id: current_user_id, dish_id: dish_id)
   }
 
-  ***REMOVED*** 前台查看个人的订餐情况
+  # 前台查看个人的订餐情况
   scope :get_orders, ->(current_user_id){
     orders = User.find(current_user_id).orders.includes("dish", "restaurant").order("id desc")
     orders_array = Array.new
@@ -24,7 +24,7 @@ class Order < ActiveRecord::Base
     return orders_array
   }
 
-  ***REMOVED*** 检查是否到订餐时间和某用户在订餐时间内的订餐个数
+  # 检查是否到订餐时间和某用户在订餐时间内的订餐个数
   scope :has_order?, ->(current_user_id){
     times = get_times
     order_count = 0
@@ -35,11 +35,11 @@ class Order < ActiveRecord::Base
         return order_count
       end
     else
-      ***REMOVED*** 未到午饭订餐时间
+      # 未到午饭订餐时间
       return -5
     end
     if times[4] > times[1] && times[4] < times[2]
-      ***REMOVED*** 过了午饭订餐时间，未到晚饭订餐时间
+      # 过了午饭订餐时间，未到晚饭订餐时间
       return -4
     end
     if times[4] > times[2] 
@@ -48,45 +48,45 @@ class Order < ActiveRecord::Base
         puts "dinner"
         return order_count
       else
-        ***REMOVED*** 已过了晚饭订餐时间
+        # 已过了晚饭订餐时间
         return -3
       end
     else
-      ***REMOVED*** 未到晚饭订餐时间
+      # 未到晚饭订餐时间
       return -4
     end
     return order_count
   }
 
-  ***REMOVED*** 查看订餐情况
+  # 查看订餐情况
   scope :check_it_out, ->(date, meal){
     times = get_times
     orders = Array.new
     redis = BurgerBitchRedisServer.redis
-    ***REMOVED*** 午饭时间
+    # 午饭时间
     if meal == "0"
       orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + redis.get('lunch_start_time')).utc, Time.parse(date + redis.get('lunch_end_time')).utc).order("dish_id")
     end
-    ***REMOVED*** 晚饭时间
+    # 晚饭时间
     if meal =="1"
       orders = Order.includes("dish", "user", "restaurant").between_times(Time.parse(date + redis.get('dinner_start_time')).utc, Time.parse(date + redis.get('dinner_end_time')).utc).order("dish_id")
     end
-    ***REMOVED*** orders = Order.includes("dish", "user").between_times(Time.parse('2015-04-02 00:00:00').utc, Time.parse('2015-04-02 10:00:00').utc).order("dish_id")
+    # orders = Order.includes("dish", "user").between_times(Time.parse('2015-04-02 00:00:00').utc, Time.parse('2015-04-02 10:00:00').utc).order("dish_id")
     sum = 0
     result_hash = Hash.new
     result_array = Array.new
     orders.each do |order|
-      ***REMOVED*** 当前订单中菜式对应的餐馆
+      # 当前订单中菜式对应的餐馆
       restaurant = order.restaurant
       iterator = has_restaurant?(result_array, restaurant.id)
-      ***REMOVED*** 当前餐馆存在列表里时，往对应餐馆对象的菜式列表加入数据
+      # 当前餐馆存在列表里时，往对应餐馆对象的菜式列表加入数据
       if iterator >= 0
         dishes_hash = result_array[iterator][:dishes]
-        ***REMOVED*** 当前菜式列表里是否有相同的菜式
+        # 当前菜式列表里是否有相同的菜式
         flag = false
         dishes_hash.each do |dish|
           if order.dish.id == dish[:id] && order.dish.price == dish[:price]
-            ***REMOVED*** 找到相同的菜式，数量+1，加入用户名字，把标识设为true
+            # 找到相同的菜式，数量+1，加入用户名字，把标识设为true
             dish[:count] += 1
             dish[:users] << order.user.real_name
             sum += order.dish.price
@@ -94,7 +94,7 @@ class Order < ActiveRecord::Base
             break
           end
         end
-        ***REMOVED*** 找不到相同的菜式，新加一个进列表
+        # 找不到相同的菜式，新加一个进列表
         unless flag
           dish_hash = Hash.new
           dish_hash[:id] = order.dish.id
@@ -106,7 +106,7 @@ class Order < ActiveRecord::Base
           sum += order.dish.price
         end
       else
-        ***REMOVED*** 当前餐馆不存在时，新建一个餐馆对象存储菜式
+        # 当前餐馆不存在时，新建一个餐馆对象存储菜式
         restaurant_hash = Hash.new
         dish_array = Array.new
         dish_hash = Hash.new
@@ -129,12 +129,12 @@ class Order < ActiveRecord::Base
     return result_hash
   }
 
-  ***REMOVED*** 计算本月金额
+  # 计算本月金额
   scope :sum_this_month, ->(current_user_id){
     sum_order = User.find(current_user_id).orders.includes("dish").by_month.sum("price")
   }
 
-  ***REMOVED*** 查看历史记录
+  # 查看历史记录
   scope :get_all, ->(params){
     orders = Order.includes("dish", "user", "restaurant").limit(params[:length]).offset(params[:start])
     orders_count = Order.includes("dish", "user", "restaurant").count
@@ -159,19 +159,19 @@ class Order < ActiveRecord::Base
     return result_hash
   }
 
-  ***REMOVED*** 获取午饭，晚饭时间
+  # 获取午饭，晚饭时间
     def self.get_times
       time = Time.now
       now_time = time.to_s
       redis = BurgerBitchRedisServer.redis
-      time1 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('lunch_start_time')}")
-      time2 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('lunch_end_time')}")
-      time3 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('dinner_start_time')}")
-      time4 = time.strftime("%Y-%m-%d***REMOVED***{redis.get('dinner_end_time')}")
+      time1 = time.strftime("%Y-%m-%d#{redis.get('lunch_start_time')}")
+      time2 = time.strftime("%Y-%m-%d#{redis.get('lunch_end_time')}")
+      time3 = time.strftime("%Y-%m-%d#{redis.get('dinner_start_time')}")
+      time4 = time.strftime("%Y-%m-%d#{redis.get('dinner_end_time')}")
       return Array[time1, time2, time3, time4, now_time]
     end
 
-    ***REMOVED*** 判断数组中是否有某餐馆的菜式列表
+    # 判断数组中是否有某餐馆的菜式列表
     def self.has_restaurant?(result_array, restaurant_id)
       result_array.each do |restaurant|
         if restaurant[:id] == restaurant_id

@@ -1,26 +1,26 @@
 class Admin::SessionsController < Devise::SessionsController
   layout "admin"
-***REMOVED*** before_filter :configure_sign_in_params, only: [:create]
+# before_filter :configure_sign_in_params, only: [:create]
 
-  ***REMOVED*** GET /resource/sign_in
-  ***REMOVED*** def new
-  ***REMOVED***   super
-  ***REMOVED*** end
+  # GET /resource/sign_in
+  # def new
+  #   super
+  # end
 
-  ***REMOVED*** POST /resource/sign_in
-  ***REMOVED*** def create
-  ***REMOVED***   super
-  ***REMOVED*** end
+  # POST /resource/sign_in
+  # def create
+  #   super
+  # end
 
-  ***REMOVED*** DELETE /resource/sign_out
-  ***REMOVED*** def destroy
-  ***REMOVED***   super
-  ***REMOVED*** end
+  # DELETE /resource/sign_out
+  # def destroy
+  #   super
+  # end
 
-  ***REMOVED*** protected
+  # protected
 
-  ***REMOVED*** You can put the params you want to permit in the empty array.
-  ***REMOVED*** def configure_sign_in_params
-  ***REMOVED***   devise_parameter_sanitizer.for(:sign_in) << :attribute
-  ***REMOVED*** end
+  # You can put the params you want to permit in the empty array.
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.for(:sign_in) << :attribute
+  # end
 end

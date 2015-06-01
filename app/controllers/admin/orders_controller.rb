@@ -1,5 +1,5 @@
 class Admin::OrdersController < Admin::ApplicationController
-  ***REMOVED*** skip_before_action :authenticate_admin!, only:[:index]
+  # skip_before_action :authenticate_admin!, only:[:index]
   layout 'admin'
   def index
   end
@@ -15,7 +15,7 @@ class Admin::OrdersController < Admin::ApplicationController
   end
 
   def all
-    ***REMOVED*** @orders = Order.get_all
+    # @orders = Order.get_all
   end
 
   def all_json
@@ -23,7 +23,7 @@ class Admin::OrdersController < Admin::ApplicationController
     render json: @orders_hash
   end
 
-  ***REMOVED*** 展示订餐时间
+  # 展示订餐时间
   def time
     redis = BurgerBitchRedisServer.redis
     @lunch_start_time = redis.get("lunch_start_time").strip
@@ -32,7 +32,7 @@ class Admin::OrdersController < Admin::ApplicationController
     @dinner_end_time = redis.get("dinner_end_time").strip
   end
 
-  ***REMOVED*** 修改订餐时间
+  # 修改订餐时间
   def edit_time
     @result = BurgerBitchRedisServer.update_time(params)
     respond_to do |format|

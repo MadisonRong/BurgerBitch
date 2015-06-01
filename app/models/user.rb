@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
-  ***REMOVED*** Include default devise modules. Others available are:
-  ***REMOVED*** :confirmable, :lockable, :timeoutable and :omniauthable
-  ***REMOVED*** devise :database_authenticatable, :registerable,
-  ***REMOVED***        :recoverable, :rememberable, :trackable, :validatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :trackable, :validatable
   has_many :orders
 
   def self.get_user_info(access_token)
-    response = RestClient.get("http://api.glassx.cn/v1/users.json?access_token=***REMOVED***{access_token}")
+    response = RestClient.get("http://api.glassx.cn/v1/users.json?access_token=#{access_token}")
     user_info = ActiveSupport::JSON.decode(response.body)
     return user_info
   end
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     expire_seconds = oauth_message["expires_in"]
     user = User.find_by(email: user_info["email"])
     if user.nil?
-      ***REMOVED*** 新用户，保存信息
+      # 新用户，保存信息
       User.create!(
         nickname: user_info["nickname"],
         email: user_info["email"],

@@ -40,37 +40,37 @@
   .sort{
     margin-left: 6px;
     display: inline-block;
-    color: ***REMOVED***ffa600;
+    color: #ffa600;
     font-size: 80%;
     margin-right: 36px;
     &:before{
       content: '分类: ';
     }
     a{
-      color: ***REMOVED***ffa600;
+      color: #ffa600;
     }
   }
   ul.tag{
-    color: ***REMOVED***ffa6a6;
+    color: #ffa6a6;
     list-style: none;
     display: inline-block; 
     font-size: 66%;
     margin-left: -36px;
     &:before{
       content: "标签: ";
-      color: ***REMOVED***ffa6a6;
+      color: #ffa6a6;
     }
     li{
       display: inline-block;
       padding-left: 6px;
       a{
-        color: ***REMOVED***ffa6a6;
+        color: #ffa6a6;
       }
     }
   }
   .number{
     font-size: 60%;
-    color: ***REMOVED***ffa600;
+    color: #ffa600;
     display: inline-block;
     margin-left: 36px;
     &:before{

@@ -5,12 +5,12 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords'
   }
 
-  root 'welcome***REMOVED***index'
-  get '/authentication' => 'authentication***REMOVED***index'
+  root 'welcome#index'
+  get '/authentication' => 'authentication#index'
 
   resource :user do
     resources :orders
-    delete 'logout' => 'sessions***REMOVED***destroy'
+    delete 'logout' => 'sessions#destroy'
   end
 
   resource :restaurant do
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root 'welcome***REMOVED***index'
+    root 'welcome#index'
     resources :admins
     resources :orders do
       collection do
@@ -26,65 +26,65 @@ Rails.application.routes.draw do
         get 'all_json'
         get 'ajax'
         get 'time'
-        post 'time/edit' => 'orders***REMOVED***edit_time'
+        post 'time/edit' => 'orders#edit_time'
       end
     end
   end
 
   mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
 
-  ***REMOVED*** The priority is based upon order of creation: first created -> highest priority.
-  ***REMOVED*** See how all your routes lay out with "rake routes".
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
 
-  ***REMOVED*** You can have the root of your site routed with "root"
-  ***REMOVED*** root 'welcome***REMOVED***index'
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
 
-  ***REMOVED*** Example of regular route:
-  ***REMOVED***   get 'products/:id' => 'catalog***REMOVED***view'
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
 
-  ***REMOVED*** Example of named route that can be invoked with purchase_url(id: product.id)
-  ***REMOVED***   get 'products/:id/purchase' => 'catalog***REMOVED***purchase', as: :purchase
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
-  ***REMOVED*** Example resource route (maps HTTP verbs to controller actions automatically):
-  ***REMOVED***   resources :products
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
-  ***REMOVED*** Example resource route with options:
-  ***REMOVED***   resources :products do
-  ***REMOVED***     member do
-  ***REMOVED***       get 'short'
-  ***REMOVED***       post 'toggle'
-  ***REMOVED***     end
-  ***REMOVED***
-  ***REMOVED***     collection do
-  ***REMOVED***       get 'sold'
-  ***REMOVED***     end
-  ***REMOVED***   end
+  # Example resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
-  ***REMOVED*** Example resource route with sub-resources:
-  ***REMOVED***   resources :products do
-  ***REMOVED***     resources :comments, :sales
-  ***REMOVED***     resource :seller
-  ***REMOVED***   end
+  # Example resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
 
-  ***REMOVED*** Example resource route with more complex sub-resources:
-  ***REMOVED***   resources :products do
-  ***REMOVED***     resources :comments
-  ***REMOVED***     resources :sales do
-  ***REMOVED***       get 'recent', on: :collection
-  ***REMOVED***     end
-  ***REMOVED***   end
+  # Example resource route with more complex sub-resources:
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', on: :collection
+  #     end
+  #   end
 
-  ***REMOVED*** Example resource route with concerns:
-  ***REMOVED***   concern :toggleable do
-  ***REMOVED***     post 'toggle'
-  ***REMOVED***   end
-  ***REMOVED***   resources :posts, concerns: :toggleable
-  ***REMOVED***   resources :photos, concerns: :toggleable
+  # Example resource route with concerns:
+  #   concern :toggleable do
+  #     post 'toggle'
+  #   end
+  #   resources :posts, concerns: :toggleable
+  #   resources :photos, concerns: :toggleable
 
-  ***REMOVED*** Example resource route within a namespace:
-  ***REMOVED***   namespace :admin do
-  ***REMOVED***     ***REMOVED*** Directs /admin/products/* to Admin::ProductsController
-  ***REMOVED***     ***REMOVED*** (app/controllers/admin/products_controller.rb)
-  ***REMOVED***     resources :products
-  ***REMOVED***   end
+  # Example resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
 end

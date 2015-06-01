@@ -29,13 +29,13 @@ class BurgerBitchOAuth < ActiveRecord::Base
 
   def self.set_token(email, response)
     redis = BurgerBitchRedisServer.redis
-    ***REMOVED*** 设置整个oauth_message
-    redis.set("***REMOVED***{email}", response["access_token"])
-    ***REMOVED*** 设置access_token
-    redis.set("***REMOVED***{email}-access_token", response["access_token"])
-    ***REMOVED*** 设置access_token过期时间
-    redis.expire("***REMOVED***{email}-access_token", Time.now.to_i+response["expires_in"])
-    ***REMOVED*** 设置refresh_token
-    redis.set("***REMOVED***{email}-refresh_token", response["refresh_token"])
+    # 设置整个oauth_message
+    redis.set("#{email}", response["access_token"])
+    # 设置access_token
+    redis.set("#{email}-access_token", response["access_token"])
+    # 设置access_token过期时间
+    redis.expire("#{email}-access_token", Time.now.to_i+response["expires_in"])
+    # 设置refresh_token
+    redis.set("#{email}-refresh_token", response["refresh_token"])
   end
 end

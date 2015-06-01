@@ -3,13 +3,13 @@ module SessionsHelper
   def logined?
     redis = BurgerBitchRedisServer.redis
     email = cookies[:burgerbitch]
-    unless redis.get("***REMOVED***{email}-refresh_token").nil?
-      unless redis.get("***REMOVED***{email}-access_token").nil?
+    unless redis.get("#{email}-refresh_token").nil?
+      unless redis.get("#{email}-access_token").nil?
         return true
       else
         response = BurgerBitchOAuth.refresh_token(
-          redis.get("***REMOVED***{email}")["access_token"],
-          redis.get("***REMOVED***{email}-refresh_token")
+          redis.get("#{email}")["access_token"],
+          redis.get("#{email}-refresh_token")
         )
         BurgerBitchOAuth.set_token(email, response)
         return true
@@ -43,13 +43,13 @@ module SessionsHelper
     cookies.permanent[:burgerbitch] = user_info["email"]
   end
 
-  ***REMOVED*** 删除redis里相关的数据
+  # 删除redis里相关的数据
   def destroy_data
     email = cookies[:burgerbitch]
     redis = BurgerBitchRedisServer.redis
     redis.del(email)
-    redis.del("***REMOVED***{email}-access_token")
-    redis.del("***REMOVED***{email}-refresh_token")
+    redis.del("#{email}-access_token")
+    redis.del("#{email}-refresh_token")
   end
 
   def destroy_cookies

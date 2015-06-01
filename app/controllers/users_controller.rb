@@ -1,10 +1,10 @@
 class UsersController < BurgerBitchController
   def edit
-    ***REMOVED*** if current_user.id == params[:id]
-    ***REMOVED***   @user = User.find(params[:id])
-    ***REMOVED*** else
-    ***REMOVED***   redirect_to root_path
-    ***REMOVED*** end
+    # if current_user.id == params[:id]
+    #   @user = User.find(params[:id])
+    # else
+    #   redirect_to root_path
+    # end
     @user = User.find(current_user.id)
   end
 
