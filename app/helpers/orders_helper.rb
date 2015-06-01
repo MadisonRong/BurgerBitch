@@ -5,6 +5,7 @@ module OrdersHelper
     order_time = order_time.to_i
     time = Time.now
     now_time = time.to_s
+    redis = BurgerBitchRediServer.redis
     ***REMOVED*** lunch
     time1 = Time.parse(time.strftime("%Y-%m-%d***REMOVED***{redis.get('lunch_end_time')}")).to_i
     ***REMOVED*** dinner
