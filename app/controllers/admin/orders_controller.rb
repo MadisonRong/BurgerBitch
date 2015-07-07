@@ -26,10 +26,10 @@ class Admin::OrdersController < Admin::ApplicationController
   # 展示订餐时间
   def time
     redis = BurgerBitchRedisServer.redis
-    @lunch_start_time = redis.get("lunch_start_time").strip
-    @lunch_end_time = redis.get("lunch_end_time").strip
-    @dinner_start_time = redis.get("dinner_start_time").strip
-    @dinner_end_time = redis.get("dinner_end_time").strip
+    @lunch_start_time = redis.get("lunch_start_time").try(:strip)
+    @lunch_end_time = redis.get("lunch_end_time").try(:strip)
+    @dinner_start_time = redis.get("dinner_start_time").try(:strip)
+    @dinner_end_time = redis.get("dinner_end_time").try(:strip)
   end
 
   # 修改订餐时间
