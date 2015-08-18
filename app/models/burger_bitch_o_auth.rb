@@ -10,7 +10,13 @@ class BurgerBitchOAuth < ActiveRecord::Base
       params_hash.to_json,
       :content_type => :json, 
       :accept => :json
-    )
+    ){ |response, request, result, &block|
+        if [301, 302, 307].include? response.code
+          response.follow_redirection(request, result, &block)
+        else
+          response.return!(request, result, &block)
+        end
+      }
     return JSON.parse response
   end
 
