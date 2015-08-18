@@ -22,7 +22,7 @@ gem 'by_star', '~> 2.2.1'
 gem 'rails_admin', '~> 0.6.7'
 gem 'roo', '~> 1.13.2'
 gem 'jquery-datatables-rails', '~> 3.2.0'
-gem 'rest-client'
+gem 'rest-client', '~> 1.8.0'
 gem 'faraday', '~> 0.9.1'
 gem 'redis', '~> 3.2.1'
 
